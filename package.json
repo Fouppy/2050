@@ -1,10 +1,7 @@
 {
-  "name": " ",
+  "name": "2050",
   "version": "0.0.1",
-  "description": "",
-  "keywords": "",
-  "license": "",
-  "author": "",
+  "author": "Fred Honoré",
   "scripts": {
     "build": "parcel build index.html",
     "dev": "parcel index.html --open",

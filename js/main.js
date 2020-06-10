@@ -5,9 +5,6 @@ if (slideshow !== null) {
   const slides = document.querySelectorAll(".slide-entry");
   const slidesArray = Array.from(slides);
   const slideCount = slides.length;
-  const logo = document.querySelectorAll(".logo")[0];
-  const originalHeight = 1024;
-  const originalWidth = 1440;
   let currentSlide = 0;
   let intervalId;
 
@@ -27,22 +24,6 @@ if (slideshow !== null) {
     currentSlide = (currentSlide + 1 + slideCount) % slideCount;
     slides[currentSlide].className = "slide-entry active";
   };
-
-  const applyRatio = () => {
-    const body = document.querySelector("body");
-    const bodyHeight = body.clientHeight;
-    const bodyWidth = body.clientWidth;
-
-    const heightRatio = bodyHeight / originalHeight;
-    const widthRatio = bodyWidth / originalWidth;
-    const ratio = Math.max(heightRatio, widthRatio);
-
-    logo.style.transform = `translate(-50%, -50%) scale(${ratio})`;
-  };
-
-  window.onresize = applyRatio;
-
-  applyRatio();
 
   // Autoplay function
   intervalId = setInterval(() => {

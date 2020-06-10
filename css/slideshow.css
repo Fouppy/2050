@@ -56,12 +56,13 @@ body {
 }
 
 .logo {
-  background: url(../img/logo.svg);
-  display: none;
-  left: 50%;
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  background: url(../img/logo.svg) center;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   z-index: 9999;
 }
 
