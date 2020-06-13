@@ -12,6 +12,7 @@ if (slideshow !== null && navigation !== null) {
   const dotsArray = Array.from(dots);
   let currentSlide = 0;
   let intervalId;
+
   // Detect browser language
   const lang = navigator.language || navigator.userLanguage;
   const shortLang = lang.split("-")[0];
@@ -35,6 +36,8 @@ if (slideshow !== null && navigation !== null) {
 
   dotsArray.map((dot, index) => {
     dot.addEventListener("click", () => {
+      if (index === currentSlide) return;
+
       stopAutoPlay();
       moveToSlide(index, false);
       startAutoPlay();
