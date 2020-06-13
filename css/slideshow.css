@@ -1,8 +1,3 @@
-html,
-body {
-  overflow: hidden;
-}
-
 .slideshow {
   position: relative;
   z-index: 10;
@@ -29,7 +24,17 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  transition: opacity 500ms;
+}
+
+.slide-entry.active {
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: fadeIn;
+}
+
+.slide-entry.fade-out {
+  opacity: 1;
 }
 
 .slide-background,
@@ -43,35 +48,77 @@ body {
 .slide-overlay {
   -webkit-mask-image: url(../img/pattern.svg);
   mask-image: url(../img/pattern.svg);
-  -webkit-mask-position: 50% 51.5234375%;
-  mask-position: 50% 51.5234375%;
+  -webkit-mask-position: center;
+  mask-position: center;
   -webkit-mask-size: cover;
   mask-size: cover;
-  transition-delay: 2500ms;
 }
 
-.slide-entry.active,
 .slide-entry.active .slide-overlay {
+  animation-delay: 4500ms;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: fadeIn;
+}
+
+.slide-entry.fade-out .slide-overlay {
+  animation-duration: 500ms;
+  animation-name: fadeOut;
+}
+
+.slideshow-navigation {
+  margin-bottom: 17px;
+}
+
+.slideshow-navigation .dots {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow-navigation .dot {
+  background-color: #fff;
+  border-radius: 50%;
+  height: 15px;
+  margin: 0 6px;
+  width: 15px;
+}
+
+.slideshow-navigation .dot::after {
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 21px;
+  margin-left: -5px;
+  margin-top: -5px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  width: 21px;
+}
+
+.slideshow-navigation .dot.active::after,
+.slideshow-navigation .dot:hover::after {
   opacity: 1;
 }
 
-.logo {
-  background: url(../img/logo.svg) center;
-  background-size: cover;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 9999;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.text {
-  color: #fff;
-  font-size: 58px;
-  font-weight: bold;
-  line-height: 58px;
-  margin: 0;
-  position: absolute;
-  top: 0;
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

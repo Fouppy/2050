@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "calibre";
+  src: url("../css/fonts/Calibre-Bold.otf");
+}
+@font-face {
+  font-family: "calibre-semibold";
+  src: url("../css/fonts/Calibre-Semibold.otf");
+}
+
+html,
+body {
+  font-family: "calibre";
+  overflow: hidden;
+}
+
+.logo {
+  background: url(../img/logo.svg) center;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+}
+
+.text {
+  color: #fff;
+  font-size: 58px;
+  font-weight: bold;
+  line-height: 58px;
+  margin: 0;
+  position: absolute;
+  top: 0;
+}
+
+.footer {
+  align-items: center;
+  /* bottom: 15%; */
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 99999;
+}
+
+.input {
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "calibre-semibold";
+  font-size: 19px;
+  height: 22px;
+  line-height: 23px;
+  padding: 14px 20px;
+  width: 410px;
+}
