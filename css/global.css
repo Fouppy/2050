@@ -24,20 +24,34 @@ body {
   z-index: 9999;
 }
 
+/* .logo {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: 9999;
+} */
+
+.text-wrapper {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .text {
   color: #fff;
   font-size: 58px;
   font-weight: bold;
   line-height: 58px;
   margin: 0;
-  position: absolute;
-  top: 0;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .footer {
   align-items: center;
   /* bottom: 15%; */
-  bottom: 80px;
+  bottom: 30px;
   display: flex;
   flex-direction: column;
   left: 50%;

@@ -52,6 +52,8 @@
   mask-position: center;
   -webkit-mask-size: cover;
   mask-size: cover;
+  /* -webkit-mask-size: 1440px 1024px;
+  mask-size: 1440px 1024px; */
 }
 
 .slide-entry.active .slide-overlay {
