@@ -33,6 +33,7 @@ body {
 
 .text-wrapper {
   left: 0;
+  padding: 0 10px;
   position: absolute;
   right: 0;
   top: 0;
@@ -40,17 +41,17 @@ body {
 
 .text {
   color: #fff;
-  font-size: 58px;
+  font-size: 41px;
   font-weight: bold;
-  line-height: 58px;
+  line-height: 37px;
   margin: 0;
   margin-top: 20px;
   text-align: center;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
 .footer {
   align-items: center;
-  /* bottom: 15%; */
   bottom: 30px;
   display: flex;
   flex-direction: column;
@@ -62,7 +63,7 @@ body {
 
 #mc_embed_signup_scroll {
   display: flex;
-  width: 410px;
+  flex-direction: column;
 }
 
 .email {
@@ -74,7 +75,6 @@ body {
   height: 22px;
   line-height: 23px;
   padding: 14px 20px;
-  width: 410px;
 }
 
 .button {
@@ -83,5 +83,39 @@ body {
   font-family: "calibre-semibold";
   font-size: 19px;
   line-height: 23px;
-  margin-left: 20px;
+  height: 50px;
+  margin-top: 10px;
+}
+
+@media (min-width: 568px) {
+  .text {
+    font-size: 58px;
+    line-height: 58px;
+  }
+
+  #mc_embed_signup_scroll {
+    flex-direction: row;
+    width: 410px;
+  }
+
+  .email {
+    width: 410px;
+  }
+
+  .button {
+    margin-left: 20px;
+    margin-top: 0;
+  }
+}
+
+@media (hover: none) and (orientation: landscape) and (max-height: 420px) {
+  .footer {
+    bottom: 10px;
+  }
+
+  .text {
+    font-size: 41px;
+    line-height: 37px;
+    margin-top: 5px;
+  }
 }

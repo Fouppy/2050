@@ -70,6 +70,7 @@
 }
 
 .slideshow-navigation {
+  display: none;
   margin-bottom: 17px;
 }
 
@@ -122,5 +123,16 @@
   }
   to {
     opacity: 0;
+  }
+}
+@media (min-width: 360px) {
+  .slideshow-navigation {
+    display: block;
+  }
+}
+
+@media (hover: none) and (orientation: landscape) and (max-height: 420px) {
+  .slideshow-navigation {
+    display: none;
   }
 }

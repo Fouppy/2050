@@ -4,6 +4,10 @@
 # TEAM
 
     <name> -- <role> -- <twitter>
+    Marie Ekeland -- Original idea -- https://twitter.com/bibicheri
+    Meyha Camara -- Project lead -- 
+    Quintin Leeds -- Graphic design -- https://twitter.com/quintinleeds
+    Fred Honoré -- Web dev -- https://twitter.com/fouppy
 
 # THANKS
 
