@@ -30,6 +30,28 @@ if (slideshow !== null && navigation !== null) {
       ? slides[index + 1].querySelector(".slide-background").src
       : slides[0].querySelector(".slide-background").src;
 
+    if (window.matchMedia("(min-width: 568px)").matches) {
+      if (Math.random() < 0.5) {
+        slide.querySelector(".text-wrapper").style.left = "30px";
+        slide.querySelector(".text-wrapper").style.right = "949px";
+        slide.querySelector(".text").style.right = "0px";
+      } else {
+        slide.querySelector(".text-wrapper").style.left = "949px";
+        slide.querySelector(".text-wrapper").style.right = "30px";
+        slide.querySelector(".text").style.left = "0px";
+      }
+
+      if (Math.random() < 0.25) {
+        slide.querySelector(".text").style.top = "0px";
+      } else if (Math.random() >= 0.25 && Math.random() < 0.5) {
+        slide.querySelector(".text").style.top = "0px";
+      } else if (Math.random() >= 0.5 && Math.random() < 0.75) {
+        slide.querySelector(".text").style.bottom = "0px";
+      } else {
+        slide.querySelector(".text").style.bottom = "0px";
+      }
+    }
+
     slide.querySelector(".text").textContent =
       data[index].translations[translation];
   });
@@ -64,7 +86,8 @@ if (slideshow !== null && navigation !== null) {
         slides[currentSlide - 1]
           ? (slides[currentSlide - 1].className = "slide-entry")
           : (slides[slideCount - 1].className = "slide-entry");
-      }, 500);
+        // }, 500);
+      }, 2000);
     }
   };
 

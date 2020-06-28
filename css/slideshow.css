@@ -27,10 +27,12 @@
 }
 
 .slide-entry.active {
-  animation-duration: 500ms;
+  /* animation-duration: 500ms; */
+  animation-duration: 2000ms;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
   animation-name: fadeIn;
+  animation-timing-function: ease-in-out;
 }
 
 .slide-entry.fade-out {
@@ -48,8 +50,8 @@
 .slide-overlay {
   -webkit-mask-image: url(../img/pattern.svg);
   mask-image: url(../img/pattern.svg);
-  -webkit-mask-position: center;
-  mask-position: center;
+  -webkit-mask-position: center -110px;
+  mask-position: center -110px;
   -webkit-mask-size: cover;
   mask-size: cover;
   /* -webkit-mask-size: 1440px 1024px;
@@ -57,21 +59,26 @@
 }
 
 .slide-entry.active .slide-overlay {
-  animation-delay: 4500ms;
-  animation-duration: 500ms;
+  /* animation-delay: 4500ms;
+  animation-duration: 500ms; */
+  animation-delay: 3000ms;
+  animation-duration: 2000ms;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
   animation-name: fadeIn;
+  animation-timing-function: ease-in-out;
 }
 
 .slide-entry.fade-out .slide-overlay {
-  animation-duration: 500ms;
+  /* animation-duration: 500ms; */
+  animation-duration: 2000ms;
   animation-name: fadeOut;
+  animation-timing-function: ease-in-out;
 }
 
 .slideshow-navigation {
   display: none;
-  margin-bottom: 17px;
+  margin-bottom: 24px;
 }
 
 .slideshow-navigation .dots {
@@ -84,23 +91,23 @@
 .slideshow-navigation .dot {
   background-color: #fff;
   border-radius: 50%;
-  height: 15px;
-  margin: 0 6px;
-  width: 15px;
+  height: 12px;
+  margin: 0 5px;
+  width: 12px;
 }
 
 .slideshow-navigation .dot::after {
   background-color: transparent;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   border-radius: 50%;
   content: "";
   display: block;
-  height: 21px;
-  margin-left: -5px;
-  margin-top: -5px;
+  height: 16px;
+  margin-left: -3px;
+  margin-top: -3px;
   opacity: 0;
   transition: opacity 0.2s;
-  width: 21px;
+  width: 16px;
 }
 
 .slideshow-navigation .dot.active::after,
@@ -125,6 +132,7 @@
     opacity: 0;
   }
 }
+
 @media (min-width: 360px) {
   .slideshow-navigation {
     display: block;

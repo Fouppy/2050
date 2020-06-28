@@ -14,7 +14,8 @@ body {
 }
 
 .logo {
-  background: url(../img/logo.svg) center;
+  background: url(../img/logo.svg);
+  background-position: center -110px;
   background-size: cover;
   bottom: 0;
   left: 0;
@@ -32,11 +33,26 @@ body {
 } */
 
 .text-wrapper {
-  left: 0;
-  padding: 0 10px;
+  /* background-color: #f00; */
+  bottom: 150px;
+  height: 122px;
+  left: 30px;
+  opacity: 0;
+  /* padding: 0 10px; */
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 30px;
+  /* top: 0; */
+}
+
+.slide-entry.active .text-wrapper {
+  /* animation-delay: 4500ms;
+  animation-duration: 500ms; */
+  /* animation-delay: 1000ms; */
+  animation-duration: 5000ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: fadeInOut;
+  animation-timing-function: ease-in-out;
 }
 
 .text {
@@ -45,14 +61,15 @@ body {
   font-weight: bold;
   line-height: 37px;
   margin: 0;
-  margin-top: 20px;
   text-align: center;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  /* text-shadow: 0 0 2px rgba(0, 0, 0, 0.5); */
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5))
+    drop-shadow(-1px -1px 2px rgba(0, 0, 0, 0.5));
 }
 
 .footer {
   align-items: center;
-  bottom: 30px;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   left: 50%;
@@ -61,56 +78,82 @@ body {
   z-index: 99999;
 }
 
-#mc_embed_signup_scroll {
+.form-wrapper {
+  background-color: #fff;
+  border-radius: 8px;
   display: flex;
-  flex-direction: column;
+  height: 26px;
+  margin: 0 30px 30px;
+  padding: 5px;
 }
 
 .email {
-  background-color: #fff;
   border: none;
-  border-radius: 8px;
   font-family: "calibre-semibold";
-  font-size: 19px;
-  height: 22px;
-  line-height: 23px;
-  padding: 14px 20px;
+  font-size: 17px;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 5px;
 }
 
 .button {
+  background-color: #000;
   border: 0;
-  border-radius: 8px;
+  border-radius: 4px;
+  color: #fff;
   font-family: "calibre-semibold";
-  font-size: 19px;
-  line-height: 23px;
-  height: 50px;
-  margin-top: 10px;
+  font-size: 17px;
+  line-height: 26px;
+  height: 26px;
+  margin-left: 5px;
+  padding: 0 15px;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @media (min-width: 568px) {
+  .footer {
+    bottom: 30px;
+  }
+
+  .text-wrapper {
+    height: 450px;
+    left: 30px;
+    right: 949px;
+    top: 160px;
+  }
+
   .text {
+    display: flex;
     font-size: 58px;
-    line-height: 58px;
+    line-height: 55px;
+    position: absolute;
   }
 
-  #mc_embed_signup_scroll {
-    flex-direction: row;
-    width: 410px;
-  }
-
-  .email {
-    width: 410px;
-  }
-
-  .button {
-    margin-left: 20px;
-    margin-top: 0;
+  .form-wrapper {
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    margin: 0 30px 30px;
   }
 }
 
 @media (hover: none) and (orientation: landscape) and (max-height: 420px) {
   .footer {
-    bottom: 10px;
+    bottom: 0;
   }
 
   .text {
