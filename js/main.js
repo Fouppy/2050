@@ -1,3 +1,5 @@
+"use strict";
+
 const data = require("./data.json");
 const slideshow = document.querySelector(".slide-wrap");
 const navigation = document.querySelector(".slideshow-navigation");
@@ -6,7 +8,6 @@ const navigation = document.querySelector(".slideshow-navigation");
 if (slideshow !== null && navigation !== null) {
   const slides = document.querySelectorAll(".slide-entry");
   const slidesArray = Array.from(slides);
-  const slideCount = slides.length;
   const dots = document.querySelectorAll(".dot");
   const dotsArray = Array.from(dots);
   let currentSlide = 0;
@@ -24,17 +25,13 @@ if (slideshow !== null && navigation !== null) {
 
   // Set up next slide background image as current slide overlay image
   // and use correct translation
-  slidesArray.map((slide, index) => {
-    slide.querySelector(".slide-overlay").src = slides[index + 1]
-      ? slides[index + 1].querySelector(".slide-background").src
-      : slides[0].querySelector(".slide-background").src;
-
+  slidesArray.map(function (slide, index) {
     slide.querySelector(".text").textContent =
       data[index].translations[translation];
   });
 
-  dotsArray.map((dot, index) => {
-    dot.addEventListener("click", () => {
+  dotsArray.map(function (dot, index) {
+    dot.addEventListener("click", function () {
       if (index === currentSlide) return;
 
       stopAutoPlay();
@@ -43,14 +40,14 @@ if (slideshow !== null && navigation !== null) {
     });
   });
 
-  const moveToSlide = (n, shouldFadeOut = true) => {
+  function moveToSlide(n, shouldFadeOut = true) {
+    const slideCount = slides.length;
+
     // Set up our slide navigation functionality
     if (shouldFadeOut) {
       slides[currentSlide].className = "slide-entry fade-out";
     } else {
-      slidesArray.map((slide) => {
-        slide.className = "slide-entry";
-      });
+      slides[currentSlide].className = "slide-entry";
     }
 
     dots[currentSlide].className = "dot";
@@ -59,29 +56,28 @@ if (slideshow !== null && navigation !== null) {
     dots[currentSlide].className = "dot active";
 
     if (shouldFadeOut) {
-      setTimeout(() => {
+      setTimeout(function () {
         slides[currentSlide - 1]
           ? (slides[currentSlide - 1].className = "slide-entry")
           : (slides[slideCount - 1].className = "slide-entry");
-        // }, 500);
       }, 2000);
     }
-  };
+  }
 
-  const nextSlide = () => {
+  function nextSlide() {
     moveToSlide(currentSlide + 1);
-  };
+  }
 
-  const startAutoPlay = () => {
-    intervalId = setInterval(() => {
+  function startAutoPlay() {
+    intervalId = setInterval(function () {
       nextSlide();
     }, 5000);
-  };
+  }
 
-  const stopAutoPlay = () => {
+  function stopAutoPlay() {
     clearInterval(intervalId);
     intervalId = null;
-  };
+  }
 
   // Handle page visibility change events
   function handleVisibilityChange() {
@@ -102,54 +98,53 @@ if (slideshow !== null && navigation !== null) {
     const heightRatio = currentHeight / initialHeight;
     const widthRatio = currentWidth / initialWidth;
     const ratio = Math.max(heightRatio, widthRatio);
-    let topPosition = currentHeight / 2 - (logoHeight * ratio) / 2 - 20;
+    const topPosition = Math.round(
+      currentHeight / 2 - (logoHeight * ratio) / 2 - 20
+    );
 
     if (ratio !== 1) {
       logoHeight = logoHeight * ratio;
       logoWidth = logoWidth * ratio;
     }
 
-    const availableLeftSpaceRightCoordinate =
-      currentWidth / 2 + logoWidth / 2 + 30;
-    const availableRightSpaceLeftCoordinate =
-      currentWidth / 2 + logoWidth / 2 + 30;
+    const availableSpaceCoordinate = Math.round(
+      currentWidth / 2 + logoWidth / 2 + 30
+    );
 
-    slidesArray.map((slide) => {
-      if (window.matchMedia("(min-width: 721px)").matches) {
+    const mediaQuery = window.matchMedia("(min-width: 721px)");
+
+    slidesArray.map(function (slide) {
+      const textWrapper = slide.querySelector(".text-wrapper");
+      const text = slide.querySelector(".text");
+
+      if (mediaQuery.matches) {
         if (Math.random() < 0.5) {
-          slide.querySelector(".text-wrapper").style.left = "30px";
-          slide.querySelector(".text-wrapper").style.right =
-            Math.round(availableLeftSpaceRightCoordinate) + "px";
-          slide.querySelector(".text-wrapper").style.top =
-            Math.round(topPosition) + "px";
-          slide.querySelector(".text-wrapper").style.height =
-            Math.round(logoHeight) + "px";
-          slide.querySelector(".text").style.right = "0px";
-          slide.querySelector(".text").style.textAlign = "right";
+          textWrapper.style.left = "30px";
+          textWrapper.style.right = availableSpaceCoordinate + "px";
+          text.style.right = "0px";
+          text.style.textAlign = "right";
         } else {
-          slide.querySelector(".text-wrapper").style.left =
-            Math.round(availableRightSpaceLeftCoordinate) + "px";
-          slide.querySelector(".text-wrapper").style.right = "30px";
-          slide.querySelector(".text-wrapper").style.top =
-            Math.round(topPosition) + "px";
-          slide.querySelector(".text-wrapper").style.height =
-            Math.round(logoHeight) + "px";
-          slide.querySelector(".text").style.left = "0px";
-          slide.querySelector(".text").style.textAlign = "left";
+          textWrapper.style.left = availableSpaceCoordinate + "px";
+          textWrapper.style.right = "30px";
+          text.style.left = "0px";
+          text.style.textAlign = "left";
         }
 
         if (Math.random() < 0.25) {
-          slide.querySelector(".text").style.top = "0px";
+          text.style.top = "0px";
         } else if (Math.random() >= 0.25 && Math.random() < 0.5) {
-          slide.querySelector(".text").style.top = "0px";
+          text.style.top = "0px";
         } else if (Math.random() >= 0.5 && Math.random() < 0.75) {
-          slide.querySelector(".text").style.bottom = "0px";
+          text.style.bottom = "0px";
         } else {
-          slide.querySelector(".text").style.bottom = "0px";
+          text.style.bottom = "0px";
         }
+
+        textWrapper.style.top = topPosition + "px";
+        textWrapper.style.height = Math.round(logoHeight) + "px";
       } else {
-        slide.querySelector(".text-wrapper").style.left = "30px";
-        slide.querySelector(".text-wrapper").style.right = "30px";
+        textWrapper.style.left = "30px";
+        textWrapper.style.right = "30px";
       }
     });
   }
