@@ -30,28 +30,6 @@ if (slideshow !== null && navigation !== null) {
       ? slides[index + 1].querySelector(".slide-background").src
       : slides[0].querySelector(".slide-background").src;
 
-    if (window.matchMedia("(min-width: 568px)").matches) {
-      if (Math.random() < 0.5) {
-        slide.querySelector(".text-wrapper").style.left = "30px";
-        slide.querySelector(".text-wrapper").style.right = "949px";
-        slide.querySelector(".text").style.right = "0px";
-      } else {
-        slide.querySelector(".text-wrapper").style.left = "949px";
-        slide.querySelector(".text-wrapper").style.right = "30px";
-        slide.querySelector(".text").style.left = "0px";
-      }
-
-      if (Math.random() < 0.25) {
-        slide.querySelector(".text").style.top = "0px";
-      } else if (Math.random() >= 0.25 && Math.random() < 0.5) {
-        slide.querySelector(".text").style.top = "0px";
-      } else if (Math.random() >= 0.5 && Math.random() < 0.75) {
-        slide.querySelector(".text").style.bottom = "0px";
-      } else {
-        slide.querySelector(".text").style.bottom = "0px";
-      }
-    }
-
     slide.querySelector(".text").textContent =
       data[index].translations[translation];
   });
@@ -106,8 +84,80 @@ if (slideshow !== null && navigation !== null) {
     intervalId = null;
   };
 
-  // navigation.addEventListener("mouseenter", stopAutoPlay);
-  // navigation.addEventListener("mouseleave", startAutoPlay);
+  // Handle page visibility change events
+  function handleVisibilityChange() {
+    if (document.visibilityState === "hidden") {
+      stopAutoPlay();
+    } else {
+      startAutoPlay();
+    }
+  }
+
+  function placeText() {
+    let initialHeight = 1024;
+    let initialWidth = 1440;
+    let logoHeight = 426.29;
+    let logoWidth = 426.55;
+    const currentHeight = slides[0].getBoundingClientRect().height;
+    const currentWidth = slides[0].getBoundingClientRect().width;
+    const heightRatio = currentHeight / initialHeight;
+    const widthRatio = currentWidth / initialWidth;
+    const ratio = Math.max(heightRatio, widthRatio);
+    let topPosition = currentHeight / 2 - (logoHeight * ratio) / 2 - 20;
+
+    if (ratio !== 1) {
+      logoHeight = logoHeight * ratio;
+      logoWidth = logoWidth * ratio;
+    }
+
+    const availableLeftSpaceRightCoordinate =
+      currentWidth / 2 + logoWidth / 2 + 30;
+    const availableRightSpaceLeftCoordinate =
+      currentWidth / 2 + logoWidth / 2 + 30;
+
+    slidesArray.map((slide) => {
+      if (window.matchMedia("(min-width: 721px)").matches) {
+        if (Math.random() < 0.5) {
+          slide.querySelector(".text-wrapper").style.left = "30px";
+          slide.querySelector(".text-wrapper").style.right =
+            Math.round(availableLeftSpaceRightCoordinate) + "px";
+          slide.querySelector(".text-wrapper").style.top =
+            Math.round(topPosition) + "px";
+          slide.querySelector(".text-wrapper").style.height =
+            Math.round(logoHeight) + "px";
+          slide.querySelector(".text").style.right = "0px";
+          slide.querySelector(".text").style.textAlign = "right";
+        } else {
+          slide.querySelector(".text-wrapper").style.left =
+            Math.round(availableRightSpaceLeftCoordinate) + "px";
+          slide.querySelector(".text-wrapper").style.right = "30px";
+          slide.querySelector(".text-wrapper").style.top =
+            Math.round(topPosition) + "px";
+          slide.querySelector(".text-wrapper").style.height =
+            Math.round(logoHeight) + "px";
+          slide.querySelector(".text").style.left = "0px";
+          slide.querySelector(".text").style.textAlign = "left";
+        }
+
+        if (Math.random() < 0.25) {
+          slide.querySelector(".text").style.top = "0px";
+        } else if (Math.random() >= 0.25 && Math.random() < 0.5) {
+          slide.querySelector(".text").style.top = "0px";
+        } else if (Math.random() >= 0.5 && Math.random() < 0.75) {
+          slide.querySelector(".text").style.bottom = "0px";
+        } else {
+          slide.querySelector(".text").style.bottom = "0px";
+        }
+      } else {
+        slide.querySelector(".text-wrapper").style.left = "30px";
+        slide.querySelector(".text-wrapper").style.right = "30px";
+      }
+    });
+  }
+
+  document.addEventListener("visibilitychange", handleVisibilityChange, false);
+
+  window.addEventListener("resize", placeText);
 
   // const getRatio = () => {
   //   const initialHeight = 1024;
@@ -125,8 +175,7 @@ if (slideshow !== null && navigation !== null) {
 
   // Autoplay function
   startAutoPlay();
-
-  // getRatio();
+  placeText();
 
   // window.onresize = () => getRatio();
 }
