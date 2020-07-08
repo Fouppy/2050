@@ -47,7 +47,9 @@ if (slideshow !== null && navigation !== null) {
     if (shouldFadeOut) {
       slides[currentSlide].className = "slide-entry fade-out";
     } else {
-      slides[currentSlide].className = "slide-entry";
+      slidesArray.map(function (slide) {
+        slide.className = "slide-entry";
+      });
     }
 
     dots[currentSlide].className = "dot";
@@ -107,24 +109,31 @@ if (slideshow !== null && navigation !== null) {
       logoWidth = logoWidth * ratio;
     }
 
-    const availableSpaceCoordinate = Math.round(
+    const availableHorizontalSpaceCoordinate = Math.round(
       currentWidth / 2 + logoWidth / 2 + 30
     );
 
+    const availableVerticalSpaceCoordinate = Math.round(
+      currentHeight / 2 + logoHeight / 2 + 20
+    );
+
     const mediaQuery = window.matchMedia("(min-width: 721px)");
+    const iPadMediaQuery = window.matchMedia(
+      "(min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5)"
+    );
 
     slidesArray.map(function (slide) {
       const textWrapper = slide.querySelector(".text-wrapper");
       const text = slide.querySelector(".text");
 
-      if (mediaQuery.matches) {
+      if (mediaQuery.matches && !iPadMediaQuery.matches) {
         if (Math.random() < 0.5) {
           textWrapper.style.left = "30px";
-          textWrapper.style.right = availableSpaceCoordinate + "px";
+          textWrapper.style.right = availableHorizontalSpaceCoordinate + "px";
           text.style.right = "0px";
           text.style.textAlign = "right";
         } else {
-          textWrapper.style.left = availableSpaceCoordinate + "px";
+          textWrapper.style.left = availableHorizontalSpaceCoordinate + "px";
           textWrapper.style.right = "30px";
           text.style.left = "0px";
           text.style.textAlign = "left";
@@ -145,6 +154,8 @@ if (slideshow !== null && navigation !== null) {
       } else {
         textWrapper.style.left = "30px";
         textWrapper.style.right = "30px";
+        textWrapper.style.top = availableVerticalSpaceCoordinate + "px";
+        text.style.textAlign = "center";
       }
     });
   }

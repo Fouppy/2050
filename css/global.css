@@ -183,6 +183,17 @@ body {
   }
 }
 
+/* ----------- iPad Pro ----------- */
+/* Portrait */
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .text {
+    display: block;
+    font-size: calc(41px * 1.5);
+    line-height: calc(37px * 1.5);
+    position: initial;
+  }
+}
+
 @media (hover: none) and (orientation: landscape) and (max-height: 420px) {
   .footer {
     bottom: 0;
@@ -191,6 +202,6 @@ body {
   .text {
     font-size: 41px;
     line-height: 37px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
   }
 }
