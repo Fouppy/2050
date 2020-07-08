@@ -27,7 +27,6 @@
 }
 
 .slide-entry.active {
-  /* animation-duration: 500ms; */
   animation-duration: 2000ms;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
@@ -52,17 +51,11 @@
   mask-image: url(../img/pattern.svg);
   -webkit-mask-position: center center;
   mask-position: center center;
-  /* -webkit-mask-position: center -110px;
-  mask-position: center -110px; */
   -webkit-mask-size: cover;
   mask-size: cover;
-  /* -webkit-mask-size: 1440px 1024px;
-  mask-size: 1440px 1024px; */
 }
 
 .slide-entry.active .slide-overlay {
-  /* animation-delay: 4500ms;
-  animation-duration: 500ms; */
   animation-delay: 3000ms;
   animation-duration: 2000ms;
   animation-fill-mode: forwards;
@@ -72,7 +65,6 @@
 }
 
 .slide-entry.fade-out .slide-overlay {
-  /* animation-duration: 500ms; */
   animation-duration: 2000ms;
   animation-name: fadeOut;
   animation-timing-function: ease-in-out;

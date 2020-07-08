@@ -4,7 +4,6 @@ const navigation = document.querySelector(".slideshow-navigation");
 
 // Make sure we don't run this script if the slideshow is not present
 if (slideshow !== null && navigation !== null) {
-  // const logo = document.querySelector(".logo");
   const slides = document.querySelectorAll(".slide-entry");
   const slidesArray = Array.from(slides);
   const slideCount = slides.length;
@@ -159,23 +158,7 @@ if (slideshow !== null && navigation !== null) {
 
   window.addEventListener("resize", placeText);
 
-  // const getRatio = () => {
-  //   const initialHeight = 1024;
-  //   const initialWidth = 1440;
-  //   const currentHeight = slides[0].getBoundingClientRect().height;
-  //   const currentWidth = slides[0].getBoundingClientRect().width;
-
-  //   const heightRatio = currentHeight / initialHeight;
-  //   const widthRatio = currentWidth / initialWidth;
-
-  //   const ratio = Math.max(heightRatio, widthRatio);
-
-  //   logo.style.transform = `translate(-50%, -50%) scale(${ratio})`;
-  // };
-
   // Autoplay function
   startAutoPlay();
   placeText();
-
-  // window.onresize = () => getRatio();
 }

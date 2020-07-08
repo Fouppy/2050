@@ -26,29 +26,16 @@ body {
   z-index: 9999;
 }
 
-/* .logo {
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  z-index: 9999;
-} */
-
 .text-wrapper {
-  /* background-color: #f00; */
   bottom: 80px;
   height: 122px;
   left: 30px;
   opacity: 0;
-  /* padding: 0 10px; */
   position: absolute;
   right: 30px;
-  /* top: 0; */
 }
 
 .slide-entry.active .text-wrapper {
-  /* animation-delay: 4500ms;
-  animation-duration: 500ms; */
-  /* animation-delay: 1000ms; */
   animation-duration: 5000ms;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
@@ -63,9 +50,7 @@ body {
   line-height: 37px;
   margin: 0;
   text-align: center;
-  /* text-shadow: 0 0 2px rgba(0, 0, 0, 0.5); */
   filter: drop-shadow(1px 1px 18px rgba(0, 0, 0, 0.5));
-  /* drop-shadow(-1px -1px 2px rgba(0, 0, 0, 0.5)); */
 }
 
 .footer {
@@ -116,64 +101,59 @@ body {
 
 .ml {
   color: #fff;
-  text-decoration: none;
-  /* position: absolute;
-  bottom: 10px;
-  z-index: 9999; */
   margin-bottom: 10px;
+  text-decoration: none;
 }
 
 .overlay {
-  position: fixed;
-  top: 0;
+  background: rgba(0, 0, 0, 0.7);
   bottom: 0;
   left: 0;
+  opacity: 0;
+  position: fixed;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
+  top: 0;
   transition: opacity 500ms;
   visibility: hidden;
-  opacity: 0;
   z-index: 99999;
 }
 
 .overlay:target {
-  visibility: visible;
   opacity: 1;
+  visibility: visible;
 }
 
 .popup {
-  margin: 70px;
-  /* padding: 20px; */
   background: #fff;
   border-radius: 5px;
-  width: 80%;
+  margin: 70px;
+  max-height: calc(100vh - 140px);
   position: relative;
   transition: all 5s ease-in-out;
-  max-height: calc(100vh - 140px);
 }
 
 .popup h2 {
+  color: #333;
   margin: 0;
   padding: 20px;
-  color: #333;
 }
 
 .popup .close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  transition: all 200ms;
+  color: #333;
   font-size: 30px;
   font-weight: bold;
-  text-decoration: none;
-  color: #333;
   line-height: 15px;
+  position: absolute;
+  right: 20px;
+  text-decoration: none;
+  top: 20px;
+  transition: all 200ms;
 }
 
 .popup .content {
-  padding: 0 20px 20px 20px;
   max-height: calc(100vh - 140px - 53px - 40px);
   overflow-y: scroll;
+  padding: 0 20px 20px 20px;
 }
 
 @keyframes fadeInOut {
@@ -195,13 +175,6 @@ body {
   /* @media (min-width: 568px) { */
   .footer {
     bottom: 20px;
-  }
-
-  .text-wrapper {
-    height: 450px;
-    /* left: 30px;
-    right: 949px; */
-    /* top: 160px; */
   }
 
   .text {
