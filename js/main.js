@@ -4,6 +4,11 @@ const data = require("./data.json");
 const slideshow = document.querySelector(".slide-wrap");
 const navigation = document.querySelector(".slideshow-navigation");
 
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty("--vh", `${vh}px`);
+
 // Make sure we don't run this script if the slideshow is not present
 if (slideshow !== null && navigation !== null) {
   const slides = document.querySelectorAll(".slide-entry");
@@ -95,6 +100,7 @@ if (slideshow !== null && navigation !== null) {
     let initialWidth = 1440;
     let logoHeight = 426.29;
     let logoWidth = 426.55;
+    const footerHeight = 114;
     const currentHeight = slides[0].getBoundingClientRect().height;
     const currentWidth = slides[0].getBoundingClientRect().width;
     const heightRatio = currentHeight / initialHeight;
@@ -115,6 +121,10 @@ if (slideshow !== null && navigation !== null) {
 
     const availableVerticalSpaceCoordinate = Math.round(
       currentHeight / 2 + logoHeight / 2 + 20
+    );
+
+    const availableTopVerticalSpaceCoordinate = Math.round(
+      currentHeight / 2 - logoHeight / 2
     );
 
     const mediaQuery = window.matchMedia("(min-width: 721px)");
@@ -154,7 +164,17 @@ if (slideshow !== null && navigation !== null) {
       } else {
         textWrapper.style.left = "30px";
         textWrapper.style.right = "30px";
-        textWrapper.style.top = availableVerticalSpaceCoordinate + "px";
+        if (
+          currentHeight - footerHeight - availableVerticalSpaceCoordinate <
+          textWrapper.getBoundingClientRect().height
+        ) {
+          textWrapper.style.top =
+            availableTopVerticalSpaceCoordinate / 2 -
+            textWrapper.getBoundingClientRect().height / 2 +
+            "px";
+        } else {
+          textWrapper.style.top = availableVerticalSpaceCoordinate + "px";
+        }
         text.style.textAlign = "center";
       }
     });

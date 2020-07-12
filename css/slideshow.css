@@ -5,12 +5,14 @@
 
 .slide-wrap {
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   margin: 0 auto;
   position: relative;
 }
 
 .slide-entry {
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   left: 0;
   right: 0;
   z-index: 20;
@@ -42,6 +44,7 @@
 .slide-overlay {
   display: block;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   object-fit: cover;
   width: 100vw;
 }
