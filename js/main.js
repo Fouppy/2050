@@ -14,6 +14,8 @@ if (slideshow !== null && navigation !== null) {
   const slides = document.querySelectorAll(".slide-entry");
   const slidesArray = Array.from(slides);
   const dots = document.querySelectorAll(".dot");
+  const legal = document.querySelector(".ml");
+  const legalTitle = document.querySelector(".mlTitle");
   const dotsArray = Array.from(dots);
   let currentSlide = 0;
   let intervalId;
@@ -22,7 +24,13 @@ if (slideshow !== null && navigation !== null) {
   const lang = navigator.language || navigator.userLanguage;
   const shortLang = lang.split("-")[0];
   let translation = "en";
-  if (shortLang === "fr") translation = "fr";
+  legal.textContent = "Legal notices";
+  legalTitle.textContent = "Legal notices";
+  if (shortLang === "fr") {
+    translation = "fr";
+    legal.textContent = "Mentions légales";
+    legalTitle.textContent = "Mentions légales";
+  }
 
   // On load, activate the first slide
   slides[0].classList.add("active");

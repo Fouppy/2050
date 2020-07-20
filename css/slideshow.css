@@ -107,9 +107,14 @@
   width: 16px;
 }
 
-.slideshow-navigation .dot.active::after,
-.slideshow-navigation .dot:hover::after {
+.slideshow-navigation .dot.active::after {
   opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .slideshow-navigation .dot:hover::after {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
