@@ -1,32 +1,50 @@
 [
   {
     "translations": {
-      "en": "Aligned ecosystem",
-      "fr": "Ecosystèmes alignés"
+      "en": "Crafting a fertile future",
+      "fr": "Pour un avenir fertile"
+    }
+  },
+  {
+    "translations": {
+      "en": "Build the world we want",
+      "fr": "Construire le monde que l’on veut"
+    }
+  },
+  {
+    "translations": {
+      "en": "Aligned ecosystems",
+      "fr": "Écosystèmes alignés"
     }
   },
   {
     "translations": {
       "en": "Early movers",
-      "fr": "Pionniers"
+      "fr": "Propulser les pionniers"
     }
   },
   {
     "translations": {
       "en": "Embrace inclusiveness",
-      "fr": "Diversité"
+      "fr": "Miser sur la diversité"
+    }
+  },
+  {
+    "translations": {
+      "en": "Foster empowerment",
+      "fr": "Donner de la puissance d’agir"
+    }
+  },
+  {
+    "translations": {
+      "en": "Purpose-driven investment",
+      "fr": "Donner du sens à l’investissement"
     }
   },
   {
     "translations": {
       "en": "Evergreen fund",
       "fr": "Fonds evergreen"
-    }
-  },
-  {
-    "translations": {
-      "en": "Fertile future",
-      "fr": "Pour un avenir fertile"
     }
   },
   {
@@ -49,32 +67,14 @@
   },
   {
     "translations": {
-      "en": "Integrate new rules",
-      "fr": "Adopter les nouvelles règles"
+      "en": "Design new rules",
+      "fr": "Façonner les nouvelles règles"
     }
   },
   {
     "translations": {
-      "en": "Key alignment indicators",
+      "en": "Key alignement indicateurs",
       "fr": "Indicateurs clés d’alignement"
-    }
-  },
-  {
-    "translations": {
-      "en": "Build the world we want",
-      "fr": "Construire le monde qu’on veut"
-    }
-  },
-  {
-    "translations": {
-      "en": "Empowerment",
-      "fr": "Donner du pouvoir d’agir"
-    }
-  },
-  {
-    "translations": {
-      "en": "Investment with purpose",
-      "fr": "Donner du sens à l’investissement"
     }
   }
 ]
